@@ -22,11 +22,14 @@ from nltk.stem import PorterStemmer
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
-
-
+'''
+nltk.download('wordnet')
+nltk.download('punkt')
+nltk.download('stopwords')
+'''
 
 #tree = ET.parse(r'C:\Users\C\Downloads\ABSA16_Restaurants_Train_SB1_v21.xml')
-tree = ET.parse(r'C:\Users\C\Downloads\ABSA16_Restaurants_Train_SB1_v24.xml')
+tree = ET.parse(r'C:\Users\Name\Downloads\ProjetTATIAgroupeYACOUB-main\python\documentation\ABSA16_Restaurants_Train_SB1_v24.xml')
 #tree = ET.parse(r'C:\Users\C\Downloads\ABSA16_Restaurants_Train_SB1_v2.xml')
 root = tree.getroot()
 
@@ -157,7 +160,7 @@ s.str[:-2]
 
 
 
-#oN CREE UN FICHIER SSV POUR MANIPLUER AVEC SKR ET NLTK
+#oN CREE UN FICHIER CSV POUR MANIPLUER AVEC SKR ET NLTK
 df = pd.DataFrame(data={"Avis_rid": s.str[:-2],"Phrase_id": listesentence,"Cible": listeopinion_target,"Categorie": listeopinion_category,"Polarite": listeopinion_polarity,"FROM": listeopinion_from,"TO": listeopinion_to,"Avis_texte": x_filtered})
 
 df.to_csv("./Tableau_de_classification_d'avis_de_restaurant.csv", sep=',',index=False)
@@ -363,7 +366,7 @@ print("\n3-grams", tri_grams)
 '''
 
 
-
+'''
 
 
 bigram_vectorizer = CountVectorizer(ngram_range=(1, 2),
@@ -404,7 +407,7 @@ y_pred = grid.predict(X_test)
 plot_confusion_matrix(grid, X_test, y_test, normalize='true');
 
 
-'''
+
 
 
 
